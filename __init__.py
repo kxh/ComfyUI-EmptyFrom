@@ -17,7 +17,7 @@ class EmptyLatentImageFromImage(nodes.EmptyLatentImage):
 	DESCRIPTION = "Create a new batch of empty latent images to be denoised via sampling."
 
 	def generate(self, images, batch_size=1):
-		image = images[0]
+		image = images[0] if len(images) > 1 else images
 		return super().generate(image.shape[2], image.shape[1], batch_size)
 
 class EmptyImageFromImage(nodes.EmptyImage):
