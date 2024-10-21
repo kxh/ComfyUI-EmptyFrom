@@ -37,7 +37,7 @@ class EmptyImageFromImage(nodes.EmptyImage):
 	CATEGORY = "image"
 
 	def generate(self, images, batch_size=1, color=0):
-		image = images[0]
+		image = images[0] if len(image) > 1 else images
 		return super().generate(image.shape[2], image.shape[1], batch_size, color)
 
 NODE_CLASS_MAPPINGS = {
